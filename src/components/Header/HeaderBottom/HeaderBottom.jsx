@@ -1,6 +1,9 @@
 //React
 import { useState } from "react";
 
+//Redux
+import { useDispatch } from "react-redux";
+
 //Material-UI
 import {
   Grid,
@@ -23,6 +26,9 @@ import styles from "./HeaderBottom.module.css";
 //Icons
 import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router-dom";
+
+//Slices
+import { logout } from "../../../redux/slices/authSlice";
 
 const CustomDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -58,6 +64,7 @@ function CustomDialogTitle(props) {
 }
 
 const HeaderBottom = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [value, setValue] = useState(0);
   const [open, setOpen] = useState(false);
@@ -75,7 +82,7 @@ const HeaderBottom = () => {
   };
 
   const handleLogout = () => {
-    localStorage.clear();
+    dispatch(logout());
     navigate("/");
   };
 

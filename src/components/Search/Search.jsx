@@ -47,9 +47,9 @@ const Search = () => {
   const filtersState = useSelector((state) => state.filters);
 
   useEffect(() => {
-    incrementFilterSkipValue(10);
     if (metaCvUsersState && metaCvUsersState.length < filtersState.skip) return;
     dispatch(getMetaCvUsers({ skip: skip, limit: limit }));
+    dispatch(incrementFilterSkipValue(10));
   }, [dispatch, setSkip, skip]);
 
   const handleFilterByName = () => {
@@ -397,7 +397,8 @@ const Search = () => {
               return <SearchCard key={index} {...value} />;
             })}
 
-          {
+          {metaCvUsersState &&
+          metaCvUsersState.length < filtersState.skip ? null : (
             <IconButton
               onClick={() => {
                 setSkip(skip + 10);
@@ -416,7 +417,7 @@ const Search = () => {
               <Typography>Show More</Typography>
               <KeyboardArrowDownIcon sx={{ color: "#fff" }} />
             </IconButton>
-          }
+          )}
         </Grid>
       </Grid>
     )
