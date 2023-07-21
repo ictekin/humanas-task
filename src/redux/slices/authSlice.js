@@ -13,7 +13,9 @@ export const login = createAsyncThunk(
     try {
       const response = await axios.post(url, body);
       localStorage.setItem("token", response?.data.token);
-      window.location.replace("http://localhost:5173/dashboard/main");
+      window.location.replace(
+        "https://main--regal-pithivier-5263ed.netlify.app/dashboard/main"
+      );
       return response?.data;
     } catch (err) {
       if (!err.response) {
