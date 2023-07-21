@@ -1,0 +1,27 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  margin-top: 4rem;
+}
+
+.profileWithPicture {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 150px;
+}
+
+@media screen and (max-width: 900px) {
+  .profileWithPicture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .profileWithText {
+    text-align: center;
+  }
+}

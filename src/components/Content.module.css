@@ -1,0 +1,34 @@
+/* 
+.slick-slide {
+  margin: 0 5px;
+}
+
+.slick-list {
+  margin: 0 5px;
+} */
+
+.container {
+  position: relative;
+  margin-top: -5rem;
+  margin-left: 6rem;
+  margin-right: 5rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+  width: 100%;
+  border: 1px solid #efefef;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    position: relative;
+    margin-top: -5rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+}
