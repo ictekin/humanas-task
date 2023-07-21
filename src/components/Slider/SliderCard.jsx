@@ -7,11 +7,25 @@ import "react-circular-progressbar/dist/styles.css";
 
 const Card = (props) => {
   return (
-    <Box sx={{ zIndex: 1, backgroundColor: props.color.primary }}>
-      <Typography sx={{ margin: "1.5rem", color: props.color.white }}>
-        {props.text}
-      </Typography>
-      <Grid sx={{ width: "120px", margin: "0 auto" }}>
+    <Box
+      sx={{
+        zIndex: 1,
+        backgroundColor: props.color.primary,
+        padding: "1.5rem",
+        width: "250px",
+        height: "200px",
+      }}
+    >
+      <Typography sx={{ color: props.color.white }}>{props.text}</Typography>
+      <Grid
+        sx={{
+          width: "140px",
+          height: "100%",
+          margin: "0 auto",
+          display: "flex",
+          alignContent: "center",
+        }}
+      >
         <CircularProgressbar
           value={props.percentage}
           text={`${props.percentage}%`}

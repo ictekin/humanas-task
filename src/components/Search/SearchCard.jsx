@@ -79,6 +79,7 @@ const SearchCard = (props) => {
           md={6}
           lg={6}
           xl={6}
+          className={styles.buttons}
           sx={{ width: "100%", marginTop: "1rem" }}
         >
           {props.charts.map((value, index) => {
@@ -101,32 +102,36 @@ const SearchCard = (props) => {
         xl={3}
         sx={{ width: "100%", marginTop: "1rem" }}
       >
-        <IconButton
-          sx={{
-            width: "175px",
-            height: "62px",
-            backgroundColor: "#F4A622",
-            borderRadius: "5px",
-            color: "#fff",
-          }}
-        >
-          <Typography>View Meta CV</Typography>
-          <ArrowForwardIcon sx={{ color: "#fff" }} />
-        </IconButton>
-
-        <IconButton
-          sx={{
-            width: "175px",
-            height: "62px",
-            backgroundColor: "#0060AD",
-            borderRadius: "5px",
-            color: "#fff",
-            marginTop: "1rem",
-          }}
-        >
-          <Typography>Order</Typography>
-          <ArrowForwardIcon sx={{ color: "#fff" }} />
-        </IconButton>
+        <Grid container className={styles.custom}>
+          <Grid item>
+            <IconButton
+              sx={{
+                width: "175px",
+                height: "62px",
+                backgroundColor: "#F4A622",
+                borderRadius: "5px",
+                color: "#fff",
+              }}
+            >
+              <Typography>View Meta CV</Typography>
+              <ArrowForwardIcon sx={{ color: "#fff" }} />
+            </IconButton>
+          </Grid>
+          <Grid item>
+            <IconButton
+              sx={{
+                width: "175px",
+                height: "62px",
+                backgroundColor: "#0060AD",
+                borderRadius: "5px",
+                color: "#fff",
+              }}
+            >
+              <Typography>Order</Typography>
+              <ArrowForwardIcon sx={{ color: "#fff" }} />
+            </IconButton>
+          </Grid>
+        </Grid>
       </Grid>
     </Card>
   );

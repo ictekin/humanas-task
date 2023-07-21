@@ -1,5 +1,5 @@
 //Material-UI
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Grid } from "@mui/material";
 
 //Styles
 import styles from "./Content.module.css";
@@ -27,8 +27,8 @@ const Content = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToShow: 5,
+    slidesToScroll: 5,
     initialSlide: 0,
     responsive: [
       {
@@ -60,7 +60,9 @@ const Content = () => {
   return (
     <>
       <div className={styles.container}>
-        <CustomSlider settings={settings} />
+        <Grid sx={{ marginLeft: "3rem" }}>
+          <CustomSlider settings={settings} />
+        </Grid>
         <Box className={styles.content}>
           <Typography sx={{ marginTop: "2rem" }}>
             {userDetailState.name + " " + userDetailState.surname}

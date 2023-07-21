@@ -47,9 +47,10 @@ const Search = () => {
   const filtersState = useSelector((state) => state.filters);
 
   useEffect(() => {
-    if (metaCvUsersState && metaCvUsersState.length < filtersState.skip) return;
-    dispatch(getMetaCvUsers({ skip: skip, limit: limit }));
-    dispatch(incrementFilterSkipValue(10));
+    if (!metaCvUsersState || metaCvUsersState.length >= filtersState.skip) {
+      dispatch(getMetaCvUsers({ skip: skip, limit: limit }));
+      dispatch(incrementFilterSkipValue(10));
+    }
   }, [dispatch, setSkip, skip]);
 
   const handleFilterByName = () => {
@@ -145,7 +146,7 @@ const Search = () => {
   return (
     metaCvUsersState && (
       <Grid container className={styles.container}>
-        <Grid item xs={12} sx={12} md={3} lg={3} xl={3}>
+        <Grid item xs={12} sx={12} md={2} lg={2} xl={2}>
           <Accordion sx={{ marginTop: "3rem" }}>
             <AccordionSummary
               sx={{ color: "#fff", backgroundColor: "#09134D" }}
@@ -183,7 +184,7 @@ const Search = () => {
                 />
               </Paper>
 
-              <FormGroup sx={{ height: "500px" }}>
+              <FormGroup>
                 <FormControlLabel
                   onChange={handleChangeLocations}
                   control={<Checkbox />}
@@ -345,7 +346,7 @@ const Search = () => {
               alignItems: "center",
               width: "90%",
               marginTop: "3rem",
-              marginLeft: "1rem",
+              marginLeft: "3rem",
               height: "3rem",
             }}
           >
@@ -383,16 +384,32 @@ const Search = () => {
                 .toLowerCase()
                 .includes(filter?.name ?? "")
             )
-            .filter((val) => val.location.includes(userinfo?.locations ?? ""))
-            .filter((val) =>
-              val.workingPreferences.includes(
-                userinfo?.workingPreferences ?? ""
-              )
-            )
-            .filter((val) =>
-              val.workingStatus.includes(userinfo?.workingStatus ?? "")
-            )
-            .filter((val) => val.languages.includes(userinfo?.language ?? ""))
+            .filter((val) => {
+              if (userinfo?.locations.length) {
+                return userinfo?.locations.includes(val.location);
+              }
+              return metaCvUsersState;
+            })
+            .filter((val) => {
+              if (userinfo?.workingPreferences.length) {
+                return userinfo?.workingPreferences.includes(
+                  val.workingPreferences
+                );
+              }
+              return metaCvUsersState;
+            })
+            .filter((val) => {
+              if (userinfo?.workingStatus.length) {
+                return userinfo?.workingStatus.includes(val.workingStatus);
+              }
+              return metaCvUsersState;
+            })
+            .filter((val) => {
+              if (userinfo?.language.length) {
+                return userinfo?.language.includes(val.languages);
+              }
+              return metaCvUsersState;
+            })
             .map((value, index) => {
               return <SearchCard key={index} {...value} />;
             })}
@@ -409,7 +426,7 @@ const Search = () => {
                 backgroundColor: "#09134D",
                 borderRadius: "5px",
                 color: "#fff",
-                marginLeft: "1rem",
+                marginLeft: "3rem",
                 padding: "1rem",
                 marginTop: "1rem",
               }}
