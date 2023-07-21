@@ -63,6 +63,14 @@ const Auth = () => {
             textTransform: "none",
             fontWeight: 400,
           }}
+          onClick={() => {
+            dispatch(
+              login({
+                url: "https://nervous-sun-hat-cod.cyclic.app/login",
+                body: { email: "ictekin@google.com", password: "deneme" },
+              })
+            );
+          }}
           startIcon={
             <LinkedInIcon
               sx={{
