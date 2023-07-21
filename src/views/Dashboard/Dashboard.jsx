@@ -23,7 +23,7 @@ const Dashboard = () => {
   useEffect(() => {
     dispatch(
       getUserDetail({
-        url: "http://localhost:3000/get-user",
+        url: "https://nervous-sun-hat-cod.cyclic.app/get-user",
         data: { _id: loginState.result.user },
       })
     );

@@ -397,7 +397,7 @@ const Search = () => {
               return <SearchCard key={index} {...value} />;
             })}
 
-          {metaCvUsersState.length < skip ? null : (
+          {
             <IconButton
               onClick={() => {
                 setSkip(skip + 10);
@@ -416,7 +416,7 @@ const Search = () => {
               <Typography>Show More</Typography>
               <KeyboardArrowDownIcon sx={{ color: "#fff" }} />
             </IconButton>
-          )}
+          }
         </Grid>
       </Grid>
     )

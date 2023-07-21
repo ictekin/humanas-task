@@ -59,7 +59,7 @@ function CustomDialogTitle(props) {
 
 const HeaderBottom = () => {
   const navigate = useNavigate();
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState(0);
   const [open, setOpen] = useState(false);
 
   const handleChange = (event, newValue) => {

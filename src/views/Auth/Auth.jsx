@@ -128,7 +128,7 @@ const Auth = () => {
           onClick={() => {
             dispatch(
               login({
-                url: "http://localhost:3000/login",
+                url: "https://nervous-sun-hat-cod.cyclic.app/login",
                 body: { email: email, password: password },
               })
             );

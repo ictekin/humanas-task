@@ -17,7 +17,7 @@ export const getMetaCvUsers = createAsyncThunk(
     try {
       const response = await axios({
         method: "POST",
-        url: "http://localhost:3000/get-meta-users",
+        url: "https://nervous-sun-hat-cod.cyclic.app/get-meta-users",
         headers: config.headers,
         data: { skip: skip, limit: limit },
       });
